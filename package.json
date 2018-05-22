@@ -1,6 +1,6 @@
 {
-  "name": "coupon-manager",
-  "description": "search and edit BigCommerce coupons",
+  "name": "Hello-world-bc",
+  "description": "Simple hello world app for BigCommerce",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -17,14 +17,7 @@
     "debug": "~2.6.3",
     "express": "^4.16.3",
     "express-async-errors": "^2.1.2",
-    "express-handlebars": "^3.0.0",
-    "express-hbs": "^1.0.4",
-    "express-session": "^1.15.6",
-    "hbs": "~4.0.1",
-    "jquery": "^3.1.1",
-    "lodash": "^4.17.5",
     "match-sorter": "^2.2.1",
-    "moment": "^2.17.1",
     "morgan": "~1.8.1",
     "mysql": "^2.15.0",
     "nodemon": "^1.14.11",
