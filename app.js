@@ -24,15 +24,6 @@ setInterval(function() {
 }, 5000);
 
 app.set('trust proxy', 1);
-app.use(
-  session({
-    proxy: true,
-    secret: process.env.COOKIE,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: true }
-  })
-);
 
 app.set('views', path.join(__dirname, 'views'));
 
