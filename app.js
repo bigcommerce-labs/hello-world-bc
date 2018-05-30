@@ -32,6 +32,7 @@ app.set('view engine', 'hbs');
 app.use('/api/auth', auth);
 app.use('/', index);
 
+
 app.use((req, res, next) => {
   let err = new Error('Not Found');
   err.status = 404;
