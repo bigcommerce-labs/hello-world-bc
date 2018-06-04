@@ -3,7 +3,15 @@ const db = require('./db');
 
 function lookupToken(data) {
   const lookupUser = `SELECT access_token FROM ${data.store_hash} LIMIT 1;`;
-  const addUserToTable = `INSERT INTO ${data.store_hash} VALUES ('null','${data.scope}',${data.user.id},'${data.user.username}','${data.user.email}','user');`;
+  const addUserToTable = `
+  INSERT INTO ${data.store_hash} VALUES (
+    'null',
+    '${data.scope}',
+    '${data.user.id},'
+    '${data.user.username}',
+    '${data.user.email}',
+    'user'
+  );`;
 
   db.query(lookupUser, (error, results, fields) => {
     if (error) {

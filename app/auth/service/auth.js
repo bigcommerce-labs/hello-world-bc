@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
       let storeHash = response.context;
       storeHash = storeHash.split('/');
 
-      const checkUserExists = `SELECT user_name FROM ${storeHash[1]} WHERE user_name='${response.user.username}';`;
+      //const checkUserExists = `SELECT user_name FROM ${storeHash[1]} WHERE user_name='${response.user.username}';`;
       const createTable = `CREATE TABLE ${storeHash[1]} (access_token varchar(255),scope varchar(255),user_id varchar(255),user_name varchar(255),user_email varchar(255),user_role varchar(255) );`;
       const addUserToTable = `INSERT INTO ${storeHash[1]} VALUES ('${response.access_token}','${response.scope}',${response.user.id},'${response.user.username}','${response.user.email}','owner');`;
 
