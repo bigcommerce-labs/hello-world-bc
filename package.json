@@ -29,6 +29,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "dotenv": "^5.0.1"
+    "dotenv": "^5.0.1",
+    "serverless-offline": "^3.25.2",
+    "serverless-plugin-typescript": "^1.1.5"
   }
 }
