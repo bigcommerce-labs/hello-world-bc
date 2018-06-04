@@ -17,11 +17,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.set('trust proxy', 1);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', [
+    path.join(__dirname, './app/auth/views'),
+    path.join(__dirname, './app/import/views'),
+]);
 app.set('view engine', 'hbs');
 
-const auth = require('./routes/auth');
-const index = require('./routes/index');
+const auth = require('./app/auth/service/auth');
+const index = require('./app/auth/service/index');
 
 app.use('/api/auth', auth);
 app.use('/', index);
