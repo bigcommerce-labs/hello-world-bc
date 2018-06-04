@@ -29,6 +29,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.6",
     "dotenv": "^5.0.1",
     "serverless-offline": "^3.25.2",
     "serverless-plugin-typescript": "^1.1.5"
