@@ -1,6 +1,6 @@
 {
-  "name": "Hello-world-bc",
-  "description": "Simple hello world app for BigCommerce",
+  "name": "Import/Export",
+  "description": "App to Import/Export tabular data from the BigCommerce API",
   "version": "0.0.1",
   "private": true,
   "scripts": {

@@ -7,6 +7,7 @@ service: import-export
 provider:
   name: aws
   runtime: nodejs8.10
+  timeout: 25
 
 # you can overwrite defaults here
 #  stage: dev
@@ -113,8 +114,7 @@ custom:
       - 'text/csv'
 
 package:
-  exclude:
-    - node_modules/**/*
   include:
-    app/import/fn/test.ts
-    app/import/fn/extract/extract-csv.ts
+    - node_modules/**
+    - app/import/fn/test.ts
+    - app/import/fn/extract/extract-csv.ts

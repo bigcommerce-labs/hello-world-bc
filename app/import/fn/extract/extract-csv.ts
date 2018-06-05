@@ -1,6 +1,6 @@
 'use strict';
 
-const csvtojson=require("csvtojson");
+const csv=require('csvtojson')
 
 import { Handler, Context, Callback } from 'aws-lambda';
 
@@ -16,15 +16,33 @@ interface ExtractCsvResponse {
 
 
 const extractCsv: Handler = (event: any, context: Context, callback: Callback) => {
+
+    console.log(event);
+
+    var rows = [];
+    csv({
+        noheader:true,
+        output: "csv"
+    })
+    .fromString(event.body)
+    .then((csvRow)=>{ 
+        console.log(csvRow);
+    })
+    
     /*const response: ExtractCsvResponse = {
         statusCode: 200,
         rowCount: 0,
         rows: []
-    };*/1
+    };*/
 
     //let contentType = event.headers['content-type']
 
-    callback(undefined, {});
+    callback(undefined,         {
+        statusCode: 200,
+        body: JSON.stringify({
+        })
+    }
+    );
 };
 
 

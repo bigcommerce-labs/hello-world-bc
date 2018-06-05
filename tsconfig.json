@@ -7,7 +7,7 @@
     "rootDir": "./",
     "sourceMap": true,
     "allowJs": true,
-    "noImplicitAny": true,
+    //"noImplicitAny": true,
     "noUnusedLocals": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
@@ -16,6 +16,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": [ "node_modules", "build", "webpack" ],
+  "exclude": [ "build", "webpack" ],
   "types": [ "typePatches" ]
 }
