@@ -48,6 +48,13 @@ functions:
       - http:
           path: test
           method: get
+  
+  extractCsv:
+    handler: app/import/fn/extract/extract-csv.extractCsv
+    events:
+      - http:
+          path: extractCsv
+          method: post
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -97,9 +104,17 @@ functions:
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
+  - serverless-apigw-binary
+
+custom:
+  apigwBinary:
+    types:
+      - 'application/csv'
+      - 'text/csv'
 
 package:
   exclude:
     - node_modules/**/*
   include:
     app/import/fn/test.ts
+    app/import/fn/extract/extract-csv.ts
