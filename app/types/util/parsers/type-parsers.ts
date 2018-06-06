@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash')
+
 interface ParseCommand {
     readonly raw: string | undefined;
     readonly isNullable: boolean;
@@ -109,3 +111,6 @@ class StringParser implements Parser<string> {
         }
     }
 }
+
+export { ParseCommand, ParseResult, NotificationSeverity, Notification }
+export let string_parser = new StringParser
