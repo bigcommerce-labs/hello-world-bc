@@ -1,5 +1,5 @@
 {
-  "name": "Import/Export",
+  "name": "import-export",
   "description": "App to Import/Export tabular data from the BigCommerce API",
   "version": "0.0.1",
   "private": true,
@@ -8,6 +8,7 @@
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.109",
     "async": "^2.1.4",
     "aws-sdk": "^2.251.1",
     "axios": "^0.18.0",
@@ -20,6 +21,7 @@
     "express": "^4.16.3",
     "express-async-errors": "^2.1.2",
     "hbs": "^4.0.1",
+    "lodash": "^4.17.10",
     "match-sorter": "^2.2.1",
     "morgan": "~1.8.1",
     "mysql": "^2.15.0",
@@ -35,6 +37,7 @@
     "@types/csvtojson": "^1.1.5",
     "@types/node": "^10.3.1",
     "dotenv": "^5.0.1",
+    "jest": "^23.1.0",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-offline": "^3.25.2",
     "serverless-plugin-typescript": "^1.1.5"
