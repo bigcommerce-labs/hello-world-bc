@@ -1,6 +1,7 @@
 'use strict';
 
-import { NotificationSeverity, ParseCommand, ParseResult, string_parser } from "./string-parser";
+import { ParseCommand, ParseResult, NotificationSeverity } from "./parser"
+import { string_parser } from "./string-parser";
 
 // string parsing tests
 test('it will give an error if a value is undefined and it is not nullable', () => {

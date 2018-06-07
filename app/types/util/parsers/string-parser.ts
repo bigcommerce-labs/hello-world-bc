@@ -2,58 +2,7 @@
 
 const _ = require('lodash')
 
-interface ParseCommand {
-    readonly raw: string | undefined;
-    readonly isNullable: boolean;
-    readonly isTruncatable: boolean;
-    readonly truncationLength: number;
-    readonly isFuzzy: boolean;
-}
-
-interface ParseResult<T> {
-    readonly result: T | undefined
-    readonly notifications: Notification[]
-}
-
-interface Parser<T> {
-    parse(cmd: ParseCommand): ParseResult<T>
-}
-
-enum NotificationSeverity {
-    Unknown = 0,
-    Debug = 1,
-    Info = 2,
-    Warn = 3,
-    Error = 4
-}
-
-interface Notification {
-    readonly severity: NotificationSeverity,
-    readonly message: string
-    readonly notificationData: object | undefined
-}
-
-/*
-
-  type parsers
-
- - boolean
- - int
- - decimal (do not support float)
- - currency with precision
- - string with length
- - row separated by characters
- - character
- - currency code
-
-  undefined = there is no row
-  null      = they want to null out the field
-
-   - trim operations should maybe occur prior to parse?
-   - assert certain invariants of parsers at construction
-     - truncationLength > 0
-
-*/
+import { Parser, ParseCommand, ParseResult, Notification, NotificationSeverity } from "./parser"
 
 class StringParser implements Parser<string> {
 
@@ -71,7 +20,7 @@ class StringParser implements Parser<string> {
 
         var notifications: Notification[] = [];
         // Ensure that string not over the size limit
-        if (!cmd.isTruncatable && cmd.raw && cmd.raw.length > cmd.truncationLength) {
+        if (!cmd.isTruncatable && cmd.raw && cmd.truncationLength && cmd.raw.length > cmd.truncationLength) {
             notifications.push(<Notification>{
                 severity: NotificationSeverity.Error,
                 message: `Value is ${cmd.raw.length} long, but only ${cmd.truncationLength} characters are allowed.`
@@ -92,7 +41,7 @@ class StringParser implements Parser<string> {
 
         // Allow truncation but warn
         var parsed = cmd.raw
-        if (cmd.isTruncatable && cmd.raw && cmd.raw.length > cmd.truncationLength) {
+        if (cmd.isTruncatable && cmd.raw && cmd.truncationLength && cmd.raw.length > cmd.truncationLength) {
             parsed = cmd.raw.substring(0, cmd.truncationLength);
             const warning = `Value has been truncated to ${cmd.truncationLength} characters`;
             notifications.push(<Notification>{
@@ -108,5 +57,4 @@ class StringParser implements Parser<string> {
     }
 }
 
-export { ParseCommand, ParseResult, NotificationSeverity, Notification }
 export let string_parser = new StringParser
