@@ -121,7 +121,7 @@ test('should have N/A send an error if fuzzy is off', () => {
         notifications: [
             {
                 severity: NotificationSeverity.Error,
-                message: 'Unable to determine a true or false value from empty (required) input'
+                message: 'Unable to determine a true or false value from input'
             }
         ]
     };

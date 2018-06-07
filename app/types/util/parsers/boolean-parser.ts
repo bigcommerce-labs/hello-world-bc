@@ -18,11 +18,7 @@ class BooleanParser implements Parser<boolean> {
 
     parse(cmd: ParseCommand): ParseResult<boolean> {
 
-        if (cmd.raw === undefined) {
-            return <ParseResult<boolean>>{};
-        }
-
-        if (!cmd.isNullable && cmd.raw.trim() === '') {
+        if (!cmd.isNullable && (cmd.raw === undefined || cmd.raw.trim() === '')) {
             return <ParseResult<boolean>>{
                 notifications: [
                     {
@@ -31,6 +27,10 @@ class BooleanParser implements Parser<boolean> {
                     }
                 ]
             }
+        }
+
+        if (cmd.raw === undefined) {
+            return <ParseResult<boolean>>{};
         }
 
         const s: string = cmd.raw.toLowerCase().trim();
@@ -61,7 +61,7 @@ class BooleanParser implements Parser<boolean> {
             notifications: [
                 {
                     severity: NotificationSeverity.Error,
-                    message: 'Unable to determine a true or false value from empty (required) input'
+                    message: 'Unable to determine a true or false value from input'
                 }
             ]
         };
