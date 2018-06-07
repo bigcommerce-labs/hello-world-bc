@@ -79,26 +79,22 @@ class StringParser implements Parser<string> {
         }
 
         // If errors, return
-        if (_.findIndex(notifications, (n: Notification) => { return n.severity == NotificationSeverity.Error }) > 0) {
+        if (_.findIndex(notifications, (n: Notification) => { return n.severity == NotificationSeverity.Error }) >= 0) {
             return <ParseResult<string>> {
                 notifications: notifications
             }
         }
 
-        // TODO: check null or undefined and return
+        // if undefined and valid, return empty parse result
         if (!cmd.raw) {
-            return <ParseResult<string>>{
-
-            }
+            return <ParseResult<string>>{};
         }
-
-        // End of gauntlet
 
         // Allow truncation but warn
         var parsed = cmd.raw
         if (cmd.isTruncatable && cmd.raw && cmd.raw.length > cmd.truncationLength) {
             parsed = cmd.raw.substring(0, cmd.truncationLength);
-            const warning = "";
+            const warning = `Value has been truncated to ${cmd.truncationLength} characters`;
             notifications.push(<Notification>{
                 severity: NotificationSeverity.Warn,
                 message: warning
