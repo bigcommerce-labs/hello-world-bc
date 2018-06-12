@@ -1,4 +1,5 @@
-import { Parser, ParseCommand, ParseResult, NotificationSeverity } from "./parser";
+import { Parser, ParseCommand, ParseResult } from "./parser";
+import { NotificationSeverity } from '../notifications/notifications'
 
 'use strict';
 
