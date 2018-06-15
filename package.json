@@ -1,33 +1,67 @@
 {
-  "name": "Hello-world-bc",
-  "description": "Simple hello world app for BigCommerce",
+  "name": "import-export",
+  "description": "App to Import/Export tabular data from the BigCommerce API",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "test": "jest"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.109",
     "async": "^2.1.4",
+    "aws-sdk": "^2.251.1",
     "axios": "^0.18.0",
     "bigcommerce-node-v2": "^1.0.0",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "crypto": "^1.0.1",
+    "csvtojson": "^2.0.3",
     "debug": "~2.6.3",
+    "decimal.js": "^10.0.1",
     "express": "^4.16.3",
     "express-async-errors": "^2.1.2",
     "hbs": "^4.0.1",
+    "lodash": "^4.17.10",
     "match-sorter": "^2.2.1",
     "morgan": "~1.8.1",
     "mysql": "^2.15.0",
     "nodemon": "^1.14.11",
     "serve-favicon": "~2.4.2",
+    "serverless": "^1.27.3",
     "superagent": "^3.4.0",
     "url": "^0.11.0"
   },
   "license": "MIT",
   "devDependencies": {
-    "dotenv": "^5.0.1"
+    "@types/aws-lambda": "^8.10.6",
+    "@types/csvtojson": "^1.1.5",
+    "@types/jest": "^23.0.0",
+    "@types/node": "^10.3.1",
+    "dotenv": "^5.0.1",
+    "jest": "^23.1.0",
+    "jshint": "^2.9.5",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-offline": "^3.25.2",
+    "serverless-plugin-typescript": "^1.1.5",
+    "ts-jest": "^22.4.6"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testPathIgnorePatterns": [
+      "./node_modules"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.)(test|spec))\\.(jsx?|tsx?|ts)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
