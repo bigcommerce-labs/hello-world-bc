@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { Parser, ParseCommand, ParseResult } from "./parser";
 import { NotificationSeverity } from '../notifications/notifications'
+=======
+import { Parser, ParseCommand, ParseResult, NotificationSeverity } from "./parser";
+>>>>>>> origin/master
 
 'use strict';
 

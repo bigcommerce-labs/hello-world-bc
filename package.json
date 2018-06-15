@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.109",
     "async": "^2.1.4",
     "axios": "^0.18.0",
     "body-parser": "~1.17.1",
