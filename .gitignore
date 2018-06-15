@@ -2,5 +2,7 @@
 node_modules
 jspm_packages
 
+env-load.sh
+.env
 # Serverless directories
 .serverless

@@ -1,29 +1,5 @@
 const crypto = require('crypto');
-const db = require('./db');
-
-function lookupToken(data) {
-  const lookupUser = `SELECT access_token FROM ${data.store_hash} LIMIT 1;`;
-  const addUserToTable = `
-  INSERT INTO ${data.store_hash} VALUES (
-    'null',
-    '${data.scope}',
-    '${data.user.id},'
-    '${data.user.username}',
-    '${data.user.email}',
-    'user'
-  );`;
-
-  db.query(lookupUser, (error, results, fields) => {
-    if (error) {
-      reject(error);
-    }
-    if (results[0] !== undefined) {
-      resolve([results[0].access_token, data.context]);
-    } else {
-      console.log(results[0]);
-    }
-  });
-}
+const db = require('../config/db');
 
 module.exports = signedRequest => {
   return new Promise((resolve, reject) => {
@@ -32,13 +8,14 @@ module.exports = signedRequest => {
     const json = new Buffer(splitSignedRequest[0], 'base64').toString('utf8');
     const correctSignature = new Buffer(splitSignedRequest[1], 'base64').toString('utf8');
     const data = JSON.parse(json);
-    const decryptedHmac = crypto
-      .createHmac('sha256', clientSecret)
-      .update(json)
-      .digest('hex');
+    const decryptedHmac = crypto.createHmac('sha256', clientSecret).update(json).digest('hex');
 
     if (decryptedHmac === correctSignature) {
-      lookupToken(data);
+        const lookupUser = `SELECT access_token FROM ${data.store_hash} LIMIT 1;`;
+        db.query(lookupUser, (error, results, fields) => {
+            if (error) return reject(error);
+            return resolve([results[0].access_token, data.context]);
+        });
     }
   });
 };
