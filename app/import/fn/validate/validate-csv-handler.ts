@@ -1,4 +1,4 @@
-
+'use strict';
 
 import { Notification } from "../../../types/util/notifications/notifications"
 

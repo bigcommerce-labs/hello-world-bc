@@ -20,7 +20,6 @@ interface ExtractCsvResponse {
 const extractCsvHandler: Handler = (event: any, context: Context, callback: Callback) => {
 
     console.log(event);
-    
 
     var header: string[] = [];
     var rows: CsvDataRow[] = [];
