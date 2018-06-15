@@ -1,7 +1,8 @@
 'use strict';
 
 import { decimal_parser } from './decimal-parser';
-import { ParseCommand, ParseResult, NotificationSeverity } from './parser';
+import { ParseCommand, ParseResult } from './parser';
+import { NotificationSeverity } from '../notifications/notifications'
 
 import { Decimal } from "decimal.js"
 

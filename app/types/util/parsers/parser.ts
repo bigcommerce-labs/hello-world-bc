@@ -1,3 +1,4 @@
+import { Notification } from '../notifications/notifications'
 
 interface ParseCommand {
     readonly raw: string | undefined;
@@ -14,20 +15,6 @@ interface ParseResult<T> {
 
 interface Parser<T> {
     parse(cmd: ParseCommand): ParseResult<T>
-}
-
-enum NotificationSeverity {
-    Unknown = 0,
-    Debug = 1,
-    Info = 2,
-    Warn = 3,
-    Error = 4
-}
-
-interface Notification {
-    readonly severity: NotificationSeverity,
-    readonly message: string
-    readonly notificationData: object | undefined
 }
 
 /*
@@ -52,4 +39,4 @@ interface Notification {
 
 */
 
-export { Parser, ParseCommand, ParseResult, NotificationSeverity, Notification }
+export { Parser, ParseCommand, ParseResult }

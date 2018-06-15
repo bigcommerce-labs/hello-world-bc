@@ -2,7 +2,8 @@
 
 const _ = require('lodash')
 
-import { Parser, ParseCommand, ParseResult, Notification, NotificationSeverity } from "./parser"
+import { Parser, ParseCommand, ParseResult } from "./parser"
+import { Notification, NotificationSeverity } from "../notifications/notifications"
 
 class StringParser implements Parser<string> {
 

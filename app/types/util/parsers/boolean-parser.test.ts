@@ -1,7 +1,8 @@
 'use strict';
 
 import { boolean_parser } from './boolean-parser';
-import { ParseCommand, ParseResult, NotificationSeverity } from './parser';
+import { NotificationSeverity } from '../notifications/notifications'
+import { ParseCommand, ParseResult } from './parser';
 
 const _ = require('lodash')
 

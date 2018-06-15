@@ -1,6 +1,7 @@
 'use strict';
 
-import { ParseCommand, ParseResult, NotificationSeverity } from "./parser"
+import { ParseCommand, ParseResult } from "./parser"
+import { NotificationSeverity } from "../notifications/notifications"
 import { string_parser } from "./string-parser";
 
 // string parsing tests
